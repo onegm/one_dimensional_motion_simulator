@@ -11,4 +11,4 @@ func _ready() -> void:
 func set_car_and_time(car : Car, time : float) -> void:
 	%TimeLabel.text += str(time) + "s"
 	%PositionLabel.text += str(round(car.get_current_position())) + "m"
-	%VelocityLabel.text += str(round(car.linear_velocity.x)) + "m/s"
+	%VelocityLabel.text += str(round(car.velocity)) + "m/s"

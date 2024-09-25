@@ -8,6 +8,7 @@
 
 [node name="Tracer" type="Area2D"]
 process_mode = 3
+top_level = true
 script = ExtResource("1_ri4rc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

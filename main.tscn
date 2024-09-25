@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://i3kqa10tdkbg"]
+[gd_scene load_steps=5 format=3 uid="uid://i3kqa10tdkbg"]
 
-[ext_resource type="Script" path="res://addons/graph_2d/graph_2d.gd" id="1_h8krp"]
 [ext_resource type="Script" path="res://main.gd" id="1_tpova"]
 [ext_resource type="PackedScene" uid="uid://b5ugb4pqrpmjh" path="res://simulation/simulation.tscn" id="2_e5q61"]
+[ext_resource type="PackedScene" uid="uid://dlfn31rere5p8" path="res://ui/car_properties/car_properties.tscn" id="3_p70h6"]
+[ext_resource type="PackedScene" uid="uid://8nr0ds835skk" path="res://ui/graph/graphs.tscn" id="4_cl0n0"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" node_paths=PackedStringArray("car_a", "car_b")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -14,6 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_tpova")
+car_a = NodePath("VBoxContainer/Control/Simulation/StartingPosition/CarA")
+car_b = NodePath("VBoxContainer/Control/Simulation/StartingPosition/CarB")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -62,27 +65,19 @@ layout_mode = 2
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/TabContainer"]
+[node name="Properties" type="HBoxContainer" parent="VBoxContainer/TabContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 30
-columns = 5
 metadata/_tab_index = 0
 
-[node name="PositionA" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
+[node name="PropertiesA" parent="VBoxContainer/TabContainer/Properties" instance=ExtResource("3_p70h6")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-step = 5.0
 
-[node name="PositionLabelA" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+[node name="PropertyLabels" type="VBoxContainer" parent="VBoxContainer/TabContainer/Properties"]
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
 
-[node name="PositionLabel" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+[node name="PositionLabel" type="Label" parent="VBoxContainer/TabContainer/Properties/PropertyLabels"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -91,33 +86,7 @@ m"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PositionLabelB" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PositionB" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VelocityA" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VelocityLabelA" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VelocityLabel" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+[node name="VelocityLabel" type="Label" parent="VBoxContainer/TabContainer/Properties/PropertyLabels"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -126,33 +95,7 @@ m/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VelocityLabelB" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VelocityB" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="AccelerationA" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="AccelerationLabelA" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AccelerationLabel" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+[node name="AccelerationLabel" type="Label" parent="VBoxContainer/TabContainer/Properties/PropertyLabels"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -161,34 +104,13 @@ m/s^2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AccelerationLabelB" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+[node name="PropertiesB" parent="VBoxContainer/TabContainer/Properties" instance=ExtResource("3_p70h6")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+h_flip = true
 
-[node name="AccelerationB" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Graphs" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+[node name="Graphs" parent="VBoxContainer/TabContainer" instance=ExtResource("4_cl0n0")]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Graphs"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PositionGraph" type="Control" parent="VBoxContainer/TabContainer/Graphs/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("1_h8krp")
-
-[node name="VelocityGraph" type="Control" parent="VBoxContainer/TabContainer/Graphs/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("1_h8krp")
+[editable path="VBoxContainer/Control/Simulation"]

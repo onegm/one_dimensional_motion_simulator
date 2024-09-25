@@ -1,39 +1,41 @@
-extends RigidBody2D
+extends Node2D
 class_name Car
 
-@export var acceleration : float
-
-var current_time : int = 0
+var initial_position = 0
 var initial_velocity : float = 0
+var velocity : float = 0
+var acceleration : float = 0
 
-@onready var initial_x_position = global_position.x
-@onready var timer := $Timer
+signal data_point_created(car : Car)
 
 func _ready() -> void:
 	SignalBus.simulation_started.connect(start)
-	timer.timeout.connect(SignalBus.data_point_created.emit.bind(self))
+	SignalBus.data_point_requested.connect(data_point_created.emit.bind(self))
 	set_physics_process(false)
+	SignalBus.car_created.emit(self)
 
 func _physics_process(delta: float) -> void:
-	linear_velocity.x += acceleration*delta
-	move_and_collide(linear_velocity)
+	position.x += velocity*delta + 0.5*acceleration*delta*delta
+	velocity += acceleration*delta
 
 func get_current_position():
-	return global_position.x - initial_x_position
+	return position.x
 
-func set_velocity(vx : float):
-	linear_velocity.x = vx
+func set_initial_velocity(vx : float):
+	velocity = vx
 	initial_velocity = vx
+	
+func set_initial_position(pos : float):
+	initial_position = pos
+	position.x = pos
 
 func set_acceleration(ax : float):
 	acceleration = ax
 
 func start():
-	SignalBus.data_point_created.emit(self)
-	if timer.is_stopped(): timer.start()
+	data_point_created.emit(self)
 	set_physics_process(true)
 
 func reset():
-	timer.stop(false)
-	current_time = 0
-	linear_velocity.x = initial_velocity
+	velocity = initial_velocity
+	position.x = initial_position
