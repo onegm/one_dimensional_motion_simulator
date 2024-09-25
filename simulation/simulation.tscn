@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5ugb4pqrpmjh"]
+
+[ext_resource type="PackedScene" uid="uid://dgnt6tp6o5acc" path="res://car/car.tscn" id="1_ot5fl"]
+
+[node name="Simulation" type="Node2D"]
+
+[node name="CarA" parent="." instance=ExtResource("1_ot5fl")]
+position = Vector2(139, 123)
+acceleration = 1.0
+
+[node name="CarB" parent="." instance=ExtResource("1_ot5fl")]
+position = Vector2(140, 258)
+acceleration = 5.0

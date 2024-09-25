@@ -1,0 +1,194 @@
+[gd_scene load_steps=4 format=3 uid="uid://i3kqa10tdkbg"]
+
+[ext_resource type="Script" path="res://addons/graph_2d/graph_2d.gd" id="1_h8krp"]
+[ext_resource type="Script" path="res://main.gd" id="1_tpova"]
+[ext_resource type="PackedScene" uid="uid://b5ugb4pqrpmjh" path="res://simulation/simulation.tscn" id="2_e5q61"]
+
+[node name="Main" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_tpova")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Start"
+
+[node name="PauseButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Pause"
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Reset"
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Simulation" parent="VBoxContainer/Control" instance=ExtResource("2_e5q61")]
+process_mode = 1
+position = Vector2(0, -179)
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+columns = 5
+metadata/_tab_index = 0
+
+[node name="PositionA" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+step = 5.0
+
+[node name="PositionLabelA" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PositionLabel" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Position
+m"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PositionLabelB" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PositionB" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VelocityA" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VelocityLabelA" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VelocityLabel" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Velocity
+m/s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VelocityLabelB" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VelocityB" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AccelerationA" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AccelerationLabelA" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccelerationLabel" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "Acceleration
+m/s^2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccelerationLabelB" type="Label" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccelerationB" type="HSlider" parent="VBoxContainer/TabContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Graphs" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Graphs"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PositionGraph" type="Control" parent="VBoxContainer/TabContainer/Graphs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_h8krp")
+
+[node name="VelocityGraph" type="Control" parent="VBoxContainer/TabContainer/Graphs/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_h8krp")
