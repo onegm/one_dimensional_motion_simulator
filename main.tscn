@@ -28,7 +28,6 @@ grow_vertical = 2
 
 [node name="Toolbar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="StartButton" type="Button" parent="VBoxContainer/Toolbar"]
 unique_name_in_owner = true
@@ -60,7 +59,9 @@ mouse_filter = 1
 
 [node name="Simulation" parent="VBoxContainer/Control" instance=ExtResource("2_e5q61")]
 process_mode = 1
-position = Vector2(0, -179)
+
+[node name="StartingPosition" parent="VBoxContainer/Control/Simulation" index="1"]
+position = Vector2(56, 153)
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
 layout_mode = 2

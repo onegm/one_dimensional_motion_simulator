@@ -22,7 +22,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_1r1n6")
 x_label = "Time (s)"
+y_max = 10.0
 y_label = "Position (m)"
+grid_horizontal_visible = true
+grid_vertical_visible = true
 
 [node name="VelocityGraph" type="Control" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -30,4 +33,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_1r1n6")
 x_label = "Time (s)"
+y_max = 10.0
 y_label = "Velocity (m/s)"
+grid_horizontal_visible = true
+grid_vertical_visible = true

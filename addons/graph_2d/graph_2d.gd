@@ -146,6 +146,8 @@ var _plots: Array
 var _x_step: float
 var _y_step: float
 
+@onready var original_y_max = y_max
+@onready var original_x_max = x_max
 #endregion
 
 func _ready():
@@ -283,7 +285,8 @@ func _update_graph() -> void:
 		var grad: Array = []
 		grad_px.y = _MARGIN_TOP + n * vert_grad_step_px
 		grad.append(grad_px)
-		var grad_text = "%0.1f" % (float(y_max) - n * float(y_axis_range)/(vert_grad_number-1))
+		var grad_value = (float(y_max) - n * float(y_axis_range)/(vert_grad_number-1))
+		var grad_text = str(round(grad_value)) if y_max >= 10 else "%0.1f" % grad_value
 		grad.append(grad_text)
 		vert_grad.append(grad)
 		
@@ -310,7 +313,8 @@ func _update_graph() -> void:
 		var grad: Array = []
 		grad_px.x = margin_left + n * hor_grad_step_px
 		grad.append(grad_px)
-		var grad_text = "%0.1f" % (float(x_min) + n * float(x_axis_range)/(hor_grad_number-1))
+		var grad_value = (float(x_min) + n * float(x_axis_range)/(hor_grad_number-1))
+		var grad_text = str(round(grad_value)) if x_max >= 10 else "%0.1f" % grad_value
 		grad.append(grad_text)
 		hor_grad.append(grad)
 		

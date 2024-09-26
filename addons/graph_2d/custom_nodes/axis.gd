@@ -47,18 +47,18 @@ func _draw() -> void:
 		for grad in hor_grad:
 			draw_string(default_font, grad[POINT] + Vector2(0, 20), grad[LABEL])
 	
-	if show_horizontal_line == true:
+	if show_horizontal_line:
 		draw_line(hor_grad.front()[POINT], hor_grad.back()[POINT], Color.WHITE)
 
-	if show_y_ticks == true:
+	if show_y_ticks:
 		for grad in vert_grad:
 			draw_line(grad[POINT], grad[POINT] - Vector2(10, 0), Color.WHITE)
 	
-	if show_y_numbers == true:
+	if show_y_numbers:
 		for grad in vert_grad:
 			draw_string(default_font, grad[0] + Vector2(-35, -5), grad[1])
 		
-	if show_vertical_line == true:
+	if show_vertical_line:
 		draw_line(topleft, vert_grad.back()[POINT], Color.WHITE)
 
 	get_node("XLabel").text = x_label
