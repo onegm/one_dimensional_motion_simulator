@@ -10,11 +10,21 @@ extends Control
 func _ready() -> void:
 	start_button.pressed.connect(on_start_button_pressed)
 	pause_button.pressed.connect(func(): get_tree().paused = !get_tree().paused)
-	reset_button.pressed.connect(SignalBus.reset_simulation_pressed.emit)
+	reset_button.pressed.connect(on_reset_button_pressed)
 	
 	%PropertiesA.car = car_a
 	%PropertiesB.car = car_b
 
 func on_start_button_pressed():
 	SignalBus.simulation_started.emit()
+	start_button.visible = false
+	pause_button.visible = true
+	reset_button.visible = true
+
+func on_reset_button_pressed():
+	SignalBus.reset_simulation_pressed.emit()
 	get_tree().paused = false
+	start_button.visible = true
+	pause_button.visible = false
+	reset_button.visible = false
+	

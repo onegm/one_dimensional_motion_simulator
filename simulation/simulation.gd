@@ -13,7 +13,13 @@ func _ready() -> void:
 		timer.start()
 		set_process(true)
 		)
-	SignalBus.reset_simulation_pressed.connect(timer.stop)
+	SignalBus.reset_simulation_pressed.connect(on_reset_simulation_pressed)
 	
 func _process(delta: float) -> void:
 	time += delta
+
+func on_reset_simulation_pressed():
+	timer.stop()
+	time = 0.0
+	set_process(false)
+	

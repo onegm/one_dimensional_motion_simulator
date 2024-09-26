@@ -26,26 +26,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Toolbar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="StartButton" type="Button" parent="VBoxContainer/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Start"
 
-[node name="PauseButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="PauseButton" type="Button" parent="VBoxContainer/Toolbar"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Pause"
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ResetButton" type="Button" parent="VBoxContainer/Toolbar"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
