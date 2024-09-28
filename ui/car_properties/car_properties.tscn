@@ -3,23 +3,53 @@
 [ext_resource type="Script" path="res://ui/car_properties/car_properties.gd" id="1_n4rvo"]
 [ext_resource type="PackedScene" uid="uid://4ntr2qctybys" path="res://ui/car_properties/property_controller/property_controller.tscn" id="2_8vipl"]
 
-[node name="CarProperties" type="VBoxContainer"]
-offset_right = 1152.0
-offset_bottom = 134.0
+[node name="CarProperties" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.607843)
+script = ExtResource("1_n4rvo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Background" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_n4rvo")
 
-[node name="PositionController" parent="." instance=ExtResource("2_8vipl")]
+[node name="PositionController" parent="MarginContainer/Background/VBox" instance=ExtResource("2_8vipl")]
 unique_name_in_owner = true
 layout_mode = 2
 max_slider_value = 1000
 arrow_step = 50
 max_digits = 3
 
-[node name="VelocityController" parent="." instance=ExtResource("2_8vipl")]
+[node name="VelocityController" parent="MarginContainer/Background/VBox" instance=ExtResource("2_8vipl")]
 unique_name_in_owner = true
 layout_mode = 2
 min_slider_value = -100
@@ -27,7 +57,7 @@ max_slider_value = 100
 arrow_step = 5
 max_digits = 3
 
-[node name="AccelerationController" parent="." instance=ExtResource("2_8vipl")]
+[node name="AccelerationController" parent="MarginContainer/Background/VBox" instance=ExtResource("2_8vipl")]
 unique_name_in_owner = true
 layout_mode = 2
 min_slider_value = -20

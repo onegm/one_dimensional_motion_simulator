@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_tpova"]
 [ext_resource type="PackedScene" uid="uid://b5ugb4pqrpmjh" path="res://simulation/simulation.tscn" id="2_e5q61"]
+[ext_resource type="Texture2D" uid="uid://dryn0qndqorgu" path="res://ui/grabber_texture.png" id="2_rstmm"]
 [ext_resource type="PackedScene" uid="uid://dlfn31rere5p8" path="res://ui/car_properties/car_properties.tscn" id="3_p70h6"]
 [ext_resource type="PackedScene" uid="uid://8nr0ds835skk" path="res://ui/graph/graphs.tscn" id="4_cl0n0"]
-[ext_resource type="Texture2D" uid="uid://tlrb4qi1qq7l" path="res://ui/Player_arrow_indicator (8 x 8).png" id="5_otcqo"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("car_a", "car_b")]
 process_mode = 3
@@ -110,6 +110,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/minimum_grab_thickness = 20
 theme_override_constants/autohide = 0
+theme_override_icons/grabber = ExtResource("2_rstmm")
 
 [node name="Control" type="Control" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer"]
 layout_mode = 2
@@ -118,9 +119,6 @@ mouse_filter = 1
 
 [node name="Simulation" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control" instance=ExtResource("2_e5q61")]
 process_mode = 1
-
-[node name="CarA" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control/Simulation/StartingPosition" index="0"]
-color = Color(1, 0, 0.0166664, 1)
 
 [node name="TabBackground" type="ColorRect" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer"]
 custom_minimum_size = Vector2(0, 275)
@@ -146,6 +144,7 @@ metadata/_tab_index = 0
 [node name="PropertiesA" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties" instance=ExtResource("3_p70h6")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 focus_next = NodePath("../PropertiesB")
 focus_previous = NodePath("../PropertiesB")
 
@@ -186,6 +185,7 @@ vertical_alignment = 1
 [node name="PropertiesB" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties" instance=ExtResource("3_p70h6")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 focus_next = NodePath("../PropertiesA")
 focus_previous = NodePath("../PropertiesA")
 h_flip = true
@@ -193,21 +193,5 @@ h_flip = true
 [node name="Graphs" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer" instance=ExtResource("4_cl0n0")]
 visible = false
 layout_mode = 2
-
-[node name="DragIcon" type="Node2D" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer"]
-visible = false
-
-[node name="DragUpArrow" type="Sprite2D" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/DragIcon"]
-modulate = Color(1, 1, 1, 0.607843)
-position = Vector2(566, 7)
-scale = Vector2(2, 2)
-texture = ExtResource("5_otcqo")
-
-[node name="DragDownArrow" type="Sprite2D" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/DragIcon"]
-modulate = Color(1, 1, 1, 0.607843)
-position = Vector2(566, -19)
-scale = Vector2(2, 2)
-texture = ExtResource("5_otcqo")
-flip_v = true
 
 [editable path="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control/Simulation"]

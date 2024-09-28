@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tlrb4qi1qq7l"
-path="res://.godot/imported/Player_arrow_indicator (8 x 8).png-e443b3bca7461a134cc9cec789da02b0.ctex"
+uid="uid://dryn0qndqorgu"
+path="res://.godot/imported/grabber_texture.png-b0b9233a8681ec6d565bf8a463ca0d73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/Player_arrow_indicator (8 x 8).png"
-dest_files=["res://.godot/imported/Player_arrow_indicator (8 x 8).png-e443b3bca7461a134cc9cec789da02b0.ctex"]
+source_file="res://ui/grabber_texture.png"
+dest_files=["res://.godot/imported/grabber_texture.png-b0b9233a8681ec6d565bf8a463ca0d73.ctex"]
 
 [params]
 
