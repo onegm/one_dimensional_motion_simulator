@@ -1,6 +1,7 @@
 extends Control
 
 @export var h_flip : bool
+		
 
 var car : Car:
 	set(new_car):
@@ -14,13 +15,12 @@ var car : Car:
 
 @onready var controllers := [position_controller, velocity_controller, acceleration_controller]
 
-func connect_signals() -> void:
-	position_controller.value_changed.connect(car.set_initial_position)
-	velocity_controller.value_changed.connect(car.set_initial_velocity)
-	acceleration_controller.value_changed.connect(car.set_acceleration)
-
 func _ready() -> void:
 	if !h_flip: return
 	for row in controllers:
 		row.move_child(row.get_child(0), -1)
-		
+
+func connect_signals() -> void:
+	position_controller.value_changed.connect(car.set_initial_position)
+	velocity_controller.value_changed.connect(car.set_initial_velocity)
+	acceleration_controller.value_changed.connect(car.set_acceleration)

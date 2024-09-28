@@ -1,20 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ugb4pqrpmjh"]
+[gd_scene load_steps=5 format=3 uid="uid://b5ugb4pqrpmjh"]
 
 [ext_resource type="Script" path="res://simulation/simulation.gd" id="1_etfi1"]
 [ext_resource type="PackedScene" uid="uid://dgnt6tp6o5acc" path="res://car/car.tscn" id="1_ot5fl"]
+[ext_resource type="Texture2D" uid="uid://c7ofw4cswmj2h" path="res://simulation/assets/straight_1.png" id="2_svc6a"]
+[ext_resource type="Texture2D" uid="uid://dp7snu4krn4hi" path="res://simulation/assets/straight_2.png" id="3_mii3v"]
 
 [node name="Simulation" type="Node2D"]
 script = ExtResource("1_etfi1")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Road" type="Node2D" parent="."]
+position = Vector2(0, 144)
+scale = Vector2(0.5, 0.5)
+
+[node name="Straight1" type="Sprite2D" parent="Road"]
+position = Vector2(256, 0)
+texture = ExtResource("2_svc6a")
+
+[node name="Straight2" type="Sprite2D" parent="Road"]
+position = Vector2(768, 0)
+texture = ExtResource("3_mii3v")
+
+[node name="Straight3" type="Sprite2D" parent="Road"]
+position = Vector2(1280, 0)
+texture = ExtResource("2_svc6a")
+
+[node name="Straight4" type="Sprite2D" parent="Road"]
+position = Vector2(1792, 0)
+texture = ExtResource("3_mii3v")
+
+[node name="Straight5" type="Sprite2D" parent="Road"]
+position = Vector2(2304, 0)
+texture = ExtResource("3_mii3v")
+
 [node name="StartingPosition" type="Marker2D" parent="."]
 position = Vector2(56, 144)
 
 [node name="CarA" parent="StartingPosition" instance=ExtResource("1_ot5fl")]
-position = Vector2(0, -70)
+position = Vector2(0, -60)
 color = Color(1, 0, 0.0166664, 1)
 
 [node name="CarB" parent="StartingPosition" instance=ExtResource("1_ot5fl")]
-position = Vector2(0, 70)
+position = Vector2(0, 60)
 color = Color(0, 0, 1, 1)
