@@ -24,6 +24,7 @@ script = ExtResource("1_1r1n6")
 x_label = "Time (s)"
 y_max = 10.0
 y_label = "Position (m)"
+background_color = Color(0.144063, 0.144063, 0.144063, 1)
 grid_horizontal_visible = true
 grid_vertical_visible = true
 
@@ -35,5 +36,6 @@ script = ExtResource("1_1r1n6")
 x_label = "Time (s)"
 y_max = 10.0
 y_label = "Velocity (m/s)"
+background_color = Color(0.144063, 0.144063, 0.144063, 1)
 grid_horizontal_visible = true
 grid_vertical_visible = true

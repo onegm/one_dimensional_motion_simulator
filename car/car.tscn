@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgnt6tp6o5acc"]
+[gd_scene load_steps=4 format=3 uid="uid://dgnt6tp6o5acc"]
 
 [ext_resource type="Script" path="res://car/car.gd" id="1_uov5v"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_0scup"]
+[ext_resource type="Texture2D" uid="uid://ciwpv1nqb1du6" path="res://car/assets/car_frame.png" id="2_0gjh1"]
+[ext_resource type="Texture2D" uid="uid://buabvy2rvmvhc" path="res://car/assets/car_body.png" id="3_tvw4f"]
 
 [node name="Car" type="Node2D"]
 script = ExtResource("1_uov5v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(50, 50)
-texture = SubResource("CanvasTexture_0scup")
+[node name="CarFrame" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0gjh1")
+
+[node name="CarBody" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tvw4f")
 
 [node name="Timer" type="Timer" parent="."]

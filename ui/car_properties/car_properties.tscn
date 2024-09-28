@@ -1,75 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlfn31rere5p8"]
+[gd_scene load_steps=3 format=3 uid="uid://dlfn31rere5p8"]
 
 [ext_resource type="Script" path="res://ui/car_properties/car_properties.gd" id="1_n4rvo"]
+[ext_resource type="PackedScene" uid="uid://4ntr2qctybys" path="res://ui/car_properties/property_controller/property_controller.tscn" id="2_8vipl"]
 
 [node name="CarProperties" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_n4rvo")
 
-[node name="Row1" type="HBoxContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PositionSlider" type="HSlider" parent="Row1"]
+[node name="PositionController" parent="." instance=ExtResource("2_8vipl")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-step = 5.0
+max_slider_value = 1000
+arrow_step = 50
+max_digits = 3
 
-[node name="PositionLabel" type="Label" parent="Row1"]
+[node name="VelocityController" parent="." instance=ExtResource("2_8vipl")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+min_slider_value = -100
+max_slider_value = 100
+arrow_step = 5
+max_digits = 3
 
-[node name="Row2" type="HBoxContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VelocitySlider" type="HSlider" parent="Row2"]
+[node name="AccelerationController" parent="." instance=ExtResource("2_8vipl")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -100.0
-step = 5.0
-
-[node name="VelocityLabel" type="Label" parent="Row2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Row3" type="HBoxContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="AccelerationSlider" type="HSlider" parent="Row3"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -30.0
-max_value = 30.0
-step = 5.0
-
-[node name="AccelerationLabel" type="Label" parent="Row3"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 3
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+min_slider_value = -20
+max_slider_value = 20
+arrow_step = 1
+max_digits = 2

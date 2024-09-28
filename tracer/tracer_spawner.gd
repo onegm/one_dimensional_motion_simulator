@@ -1,6 +1,6 @@
 extends Node
 
-const tracer_scene : PackedScene = preload("res://car/tracer.tscn")
+const tracer_scene : PackedScene = preload("res://tracer/tracer.tscn")
 
 var tracers = []
 
@@ -14,7 +14,7 @@ func on_data_point_created(car : Car):
 	var tracer = tracer_scene.instantiate()
 	car.add_sibling(tracer)
 	tracer.global_position = car.global_position
-	tracer.set_car_and_time(car, floor(Simulation.time))
+	tracer.set_car_and_time(car, round(Simulation.time))
 	tracers.append(tracer)
 
 func on_reset_simulation_pressed():

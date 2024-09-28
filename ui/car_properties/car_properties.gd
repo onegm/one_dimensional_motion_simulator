@@ -1,33 +1,23 @@
 extends VBoxContainer
 
-@export var h_flip : bool:
-	set(value):
-		h_flip = value
-		flip_h()
+@export var h_flip : bool
 
 var car : Car:
 	set(new_car):
 		car = new_car
-		connect_sliders()
+		connect_signals()
 
-@onready var position_slider : HSlider = %PositionSlider
-@onready var position_label : Label = %PositionLabel
-@onready var velocity_slider : HSlider = %VelocitySlider
-@onready var velocity_label : Label = %VelocityLabel
-@onready var acceleration_slider : HSlider = %AccelerationSlider
-@onready var acceleration_label : Label = %AccelerationLabel
+@onready var position_controller := %PositionController
+@onready var velocity_controller := %VelocityController
+@onready var acceleration_controller := %AccelerationController
+
+func connect_signals() -> void:
+	position_controller.value_changed.connect(car.set_initial_position)
+	velocity_controller.value_changed.connect(car.set_initial_velocity)
+	acceleration_controller.value_changed.connect(car.set_acceleration)
 
 func _ready() -> void:
-	position_slider.value_changed.connect(func(value): position_label.text = str(value))
-	velocity_slider.value_changed.connect(func(value): velocity_label.text = str(value))
-	acceleration_slider.value_changed.connect(func(value): acceleration_label.text = str(value))
-
-func connect_sliders():
-	position_slider.value_changed.connect(car.set_initial_position)
-	velocity_slider.value_changed.connect(car.set_initial_velocity)
-	acceleration_slider.value_changed.connect(car.set_acceleration)
-
-func flip_h():
+	if !h_flip: return
 	for row in get_children():
 		if row is not HBoxContainer:
 			continue

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://i3kqa10tdkbg"]
+[gd_scene load_steps=6 format=3 uid="uid://i3kqa10tdkbg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tpova"]
 [ext_resource type="PackedScene" uid="uid://b5ugb4pqrpmjh" path="res://simulation/simulation.tscn" id="2_e5q61"]
 [ext_resource type="PackedScene" uid="uid://dlfn31rere5p8" path="res://ui/car_properties/car_properties.tscn" id="3_p70h6"]
 [ext_resource type="PackedScene" uid="uid://8nr0ds835skk" path="res://ui/graph/graphs.tscn" id="4_cl0n0"]
+[ext_resource type="Texture2D" uid="uid://tlrb4qi1qq7l" path="res://ui/Player_arrow_indicator (8 x 8).png" id="5_otcqo"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("car_a", "car_b")]
 process_mode = 3
@@ -13,107 +14,200 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 mouse_filter = 1
 script = ExtResource("1_tpova")
-car_a = NodePath("VBoxContainer/Control/Simulation/StartingPosition/CarA")
-car_b = NodePath("VBoxContainer/Control/Simulation/StartingPosition/CarB")
+car_a = NodePath("Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control/Simulation/StartingPosition/CarA")
+car_b = NodePath("Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control/Simulation/StartingPosition/CarB")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Frame" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Toolbar" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Frame/MarginContainer"]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.175567, 0.46, 0.138, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Frame/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer"]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="VBoxContainer/Toolbar"]
+[node name="ColorRect" type="ColorRect" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 41)
+layout_mode = 2
+color = Color(0.501961, 0.501961, 0.501961, 0.784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="Toolbar" type="HBoxContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ColorRect/MarginContainer/Toolbar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Start"
 
-[node name="PauseButton" type="Button" parent="VBoxContainer/Toolbar"]
+[node name="PauseButton" type="Button" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ColorRect/MarginContainer/Toolbar"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+disabled = true
 text = "Pause"
 
-[node name="ResetButton" type="Button" parent="VBoxContainer/Toolbar"]
+[node name="ResetButton" type="Button" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ColorRect/MarginContainer/Toolbar"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+disabled = true
 text = "Reset"
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/minimum_grab_thickness = 20
+theme_override_constants/autohide = 0
+
+[node name="Control" type="Control" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="Simulation" parent="VBoxContainer/Control" instance=ExtResource("2_e5q61")]
+[node name="Simulation" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control" instance=ExtResource("2_e5q61")]
 process_mode = 1
 
-[node name="StartingPosition" parent="VBoxContainer/Control/Simulation" index="1"]
-position = Vector2(56, 153)
+[node name="CarA" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control/Simulation/StartingPosition" index="0"]
+color = Color(1, 0, 0.0166664, 1)
 
-[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+[node name="TabBackground" type="ColorRect" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer"]
+custom_minimum_size = Vector2(0, 275)
 layout_mode = 2
 size_flags_vertical = 3
+color = Color(0.277528, 0.277528, 0.277528, 1)
+
+[node name="TabContainer" type="TabContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground"]
+z_index = 1
+custom_minimum_size = Vector2(0, 275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 current_tab = 0
 
-[node name="Properties" type="HBoxContainer" parent="VBoxContainer/TabContainer"]
+[node name="Properties" type="HBoxContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="PropertiesA" parent="VBoxContainer/TabContainer/Properties" instance=ExtResource("3_p70h6")]
+[node name="PropertiesA" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties" instance=ExtResource("3_p70h6")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_next = NodePath("../PropertiesB")
+focus_previous = NodePath("../PropertiesB")
 
-[node name="PropertyLabels" type="VBoxContainer" parent="VBoxContainer/TabContainer/Properties"]
+[node name="PropertyLabels" type="VBoxContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="PositionLabel" type="Label" parent="VBoxContainer/TabContainer/Properties/PropertyLabels"]
+[node name="PositionLabel" type="Label" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties/PropertyLabels"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "Position
 m"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VelocityLabel" type="Label" parent="VBoxContainer/TabContainer/Properties/PropertyLabels"]
+[node name="VelocityLabel" type="Label" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties/PropertyLabels"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "Velocity
 m/s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AccelerationLabel" type="Label" parent="VBoxContainer/TabContainer/Properties/PropertyLabels"]
+[node name="AccelerationLabel" type="Label" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties/PropertyLabels"]
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "Acceleration
 m/s^2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PropertiesB" parent="VBoxContainer/TabContainer/Properties" instance=ExtResource("3_p70h6")]
+[node name="PropertiesB" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/Properties" instance=ExtResource("3_p70h6")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_next = NodePath("../PropertiesA")
+focus_previous = NodePath("../PropertiesA")
 h_flip = true
 
-[node name="Graphs" parent="VBoxContainer/TabContainer" instance=ExtResource("4_cl0n0")]
+[node name="Graphs" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer" instance=ExtResource("4_cl0n0")]
 visible = false
 layout_mode = 2
 
-[editable path="VBoxContainer/Control/Simulation"]
+[node name="DragIcon" type="Node2D" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer"]
+visible = false
+
+[node name="DragUpArrow" type="Sprite2D" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/DragIcon"]
+modulate = Color(1, 1, 1, 0.607843)
+position = Vector2(566, 7)
+scale = Vector2(2, 2)
+texture = ExtResource("5_otcqo")
+
+[node name="DragDownArrow" type="Sprite2D" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer/DragIcon"]
+modulate = Color(1, 1, 1, 0.607843)
+position = Vector2(566, -19)
+scale = Vector2(2, 2)
+texture = ExtResource("5_otcqo")
+flip_v = true
+
+[editable path="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control/Simulation"]

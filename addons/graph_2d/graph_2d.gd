@@ -148,6 +148,8 @@ var _y_step: float
 
 @onready var original_y_max = y_max
 @onready var original_x_max = x_max
+@onready var original_y_min = y_min
+@onready var original_x_min = x_min
 #endregion
 
 func _ready():

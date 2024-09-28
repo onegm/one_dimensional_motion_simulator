@@ -9,10 +9,12 @@ script = ExtResource("1_etfi1")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="StartingPosition" type="Marker2D" parent="."]
-position = Vector2(138, 188)
+position = Vector2(56, 144)
 
 [node name="CarA" parent="StartingPosition" instance=ExtResource("1_ot5fl")]
 position = Vector2(0, -70)
+color = Color(1, 0, 0.0166664, 1)
 
 [node name="CarB" parent="StartingPosition" instance=ExtResource("1_ot5fl")]
 position = Vector2(0, 70)
+color = Color(0, 0, 1, 1)

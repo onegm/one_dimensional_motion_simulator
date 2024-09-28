@@ -29,6 +29,8 @@ func _ready():
 	var y_label_node = Label.new()
 	y_label_node.name = "YLabel"
 	y_label_node.rotation = -PI/2
+	y_label_node.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	y_label_node["size_flags_horizontal"] = Control.SIZE_FILL
 	add_child(y_label_node)
 	
 
@@ -64,4 +66,4 @@ func _draw() -> void:
 	get_node("XLabel").text = x_label
 	get_node("YLabel").text = y_label 
 	get_node("XLabel").position = Vector2((bottomright.x + topleft.x)/2, bottomright.y + 20)
-	get_node("YLabel").position = Vector2(5, (bottomright.y + topleft.y)/2)
+	get_node("YLabel").position = Vector2(5, (bottomright.y + topleft.y)/2 + 3*y_label.length())

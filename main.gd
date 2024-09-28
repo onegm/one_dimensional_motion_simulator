@@ -17,14 +17,14 @@ func _ready() -> void:
 
 func on_start_button_pressed():
 	SignalBus.simulation_started.emit()
-	start_button.visible = false
-	pause_button.visible = true
-	reset_button.visible = true
+	start_button.disabled = true
+	pause_button.disabled = false
+	reset_button.disabled = false
 
 func on_reset_button_pressed():
 	SignalBus.reset_simulation_pressed.emit()
 	get_tree().paused = false
-	start_button.visible = true
-	pause_button.visible = false
-	reset_button.visible = false
+	start_button.disabled = false
+	pause_button.disabled = true
+	reset_button.disabled = true
 	

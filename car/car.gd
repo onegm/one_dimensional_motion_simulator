@@ -1,6 +1,12 @@
+@tool
 extends Node2D
 class_name Car
 
+@export var color : Color :
+	set(value):
+		color = value
+		$CarBody.modulate = color
+		
 var initial_position : float = 0.0
 var initial_velocity : float = 0.0
 var velocity : float = 0.0
@@ -19,19 +25,19 @@ func _physics_process(delta: float) -> void:
 	position.x += velocity*delta + 0.5*acceleration*delta*delta
 	velocity += acceleration*delta
 
+func set_initial_position(value : float) -> void:
+		initial_position = value
+		position.x = value
+
 func get_current_position():
 	return position.x
 
-func set_initial_velocity(vx : float):
-	velocity = vx
-	initial_velocity = vx
-	
-func set_initial_position(pos : float):
-	initial_position = pos
-	position.x = pos
+func set_initial_velocity(value : float):
+	velocity = value
+	initial_velocity = value
 
-func set_acceleration(ax : float):
-	acceleration = ax
+func set_acceleration(value : float):
+	acceleration = value
 
 func start():
 	data_point_created.emit(self)
