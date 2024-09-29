@@ -46,6 +46,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 max_slider_value = 1000
+tick_count = 11
 arrow_step = 50
 max_digits = 3
 
@@ -54,6 +55,7 @@ unique_name_in_owner = true
 layout_mode = 2
 min_slider_value = -100
 max_slider_value = 100
+tick_count = 11
 arrow_step = 5
 max_digits = 3
 
@@ -62,5 +64,6 @@ unique_name_in_owner = true
 layout_mode = 2
 min_slider_value = -20
 max_slider_value = 20
+tick_count = 9
 arrow_step = 1
 max_digits = 2
