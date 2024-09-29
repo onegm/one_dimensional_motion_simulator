@@ -5,7 +5,7 @@ extends VBoxContainer
 
 func _enter_tree() -> void:
 	SignalBus.car_created.connect(add_car)
-	SignalBus.reset_simulation_pressed.connect(on_reset_simulation_pressed)
+	SignalBus.reset_simulation_requested.connect(on_reset_simulation_requested)
 
 func add_car(car : Car) -> void:
 	await ready
@@ -16,7 +16,7 @@ func add_car(car : Car) -> void:
 		velocity_series.add_point(Vector2(Simulation.time, this_car.velocity))
 		)
 
-func on_reset_simulation_pressed():
+func on_reset_simulation_requested():
 	for plot in position_graph._plots:
 		plot.remove_all()
 	for plot in velocity_graph._plots:

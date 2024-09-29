@@ -3,7 +3,6 @@ class_name Simulation
 
 
 static var time := 0.0
-static var cars := []
 
 @onready var timer = $Timer
 
@@ -14,12 +13,12 @@ func _ready() -> void:
 		set_process(true)
 		timer.start()
 		)
-	SignalBus.reset_simulation_pressed.connect(on_reset_simulation_pressed)
+	SignalBus.reset_simulation_requested.connect(on_reset_simulation_requested)
 	
 func _process(delta: float) -> void:
 	time += delta
 
-func on_reset_simulation_pressed():
+func on_reset_simulation_requested():
 	timer.stop()
 	time = 0.0
 	set_process(false)

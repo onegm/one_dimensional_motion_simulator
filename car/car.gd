@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node2D
 class_name Car
 
@@ -17,17 +17,19 @@ signal data_point_created(car : Car)
 func _ready() -> void:
 	SignalBus.simulation_started.connect(start)
 	SignalBus.data_point_requested.connect(data_point_created.emit.bind(self))
-	SignalBus.reset_simulation_pressed.connect(on_reset_simulation_pressed)
-	set_physics_process(false)
+	SignalBus.reset_simulation_requested.connect(on_reset_simulation_requested)
+	set_process(false)
 	SignalBus.car_created.emit(self)
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	position.x += velocity*delta + 0.5*acceleration*delta*delta
 	velocity += acceleration*delta
+	if 1.0 / delta != 30.0:
+		print(1.0/delta)
 
 func set_initial_position(value : float) -> void:
-		initial_position = value
-		position.x = value
+	initial_position = value
+	position.x = value
 
 func get_current_position():
 	return position.x
@@ -41,9 +43,9 @@ func set_acceleration(value : float):
 
 func start():
 	data_point_created.emit(self)
-	set_physics_process(true)
+	set_process(true)
 
-func on_reset_simulation_pressed():
+func on_reset_simulation_requested():
 	position.x = initial_position
 	velocity = initial_velocity
-	set_physics_process(false)
+	set_process(false)

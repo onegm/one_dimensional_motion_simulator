@@ -1,10 +1,89 @@
-[gd_scene load_steps=6 format=3 uid="uid://i3kqa10tdkbg"]
+[gd_scene load_steps=30 format=3 uid="uid://i3kqa10tdkbg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tpova"]
 [ext_resource type="PackedScene" uid="uid://b5ugb4pqrpmjh" path="res://simulation/simulation.tscn" id="2_e5q61"]
-[ext_resource type="Texture2D" uid="uid://dryn0qndqorgu" path="res://ui/grabber_texture.png" id="2_rstmm"]
+[ext_resource type="Texture2D" uid="uid://dtx7mmutoeomm" path="res://ui/assets/simulation_control_icons.png" id="2_i30ms"]
+[ext_resource type="Texture2D" uid="uid://dryn0qndqorgu" path="res://ui/assets/grabber_texture.png" id="2_rstmm"]
 [ext_resource type="PackedScene" uid="uid://dlfn31rere5p8" path="res://ui/car_properties/car_properties.tscn" id="3_p70h6"]
 [ext_resource type="PackedScene" uid="uid://8nr0ds835skk" path="res://ui/graph/graphs.tscn" id="4_cl0n0"]
+[ext_resource type="Texture2D" uid="uid://rd6l32g6pt5t" path="res://ui/assets/reset-14414.png" id="6_o1xhr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bmxmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnp04"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(145, 206, 110, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cur73"]
+texture = SubResource("AtlasTexture_fnp04")
+modulate_color = Color(0.705882, 0.705882, 0.705882, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4rbb"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(145, 206, 110, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ys0hc"]
+texture = SubResource("AtlasTexture_e4rbb")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6asw3"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(10, 206, 109, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2umlh"]
+texture = SubResource("AtlasTexture_6asw3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f2ca"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(282, 206, 110, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56osq"]
+texture = SubResource("AtlasTexture_8f2ca")
+modulate_color = Color(0.705882, 0.705882, 0.705882, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b3t3x"]
+texture = SubResource("AtlasTexture_8f2ca")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3cp5"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(416, 206, 110, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukwqh"]
+texture = SubResource("AtlasTexture_k3cp5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r72qn"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(554, 206, 109, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_672xq"]
+texture = SubResource("AtlasTexture_r72qn")
+modulate_color = Color(0.705882, 0.705882, 0.705882, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeeoa"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(686, 206, 109, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q40ja"]
+texture = SubResource("AtlasTexture_yeeoa")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maqx8"]
+atlas = ExtResource("2_i30ms")
+region = Rect2(554, 206, 109, 109)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8lff"]
+texture = SubResource("AtlasTexture_maqx8")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_o8e45"]
+color = Color(1, 1, 0, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p28rk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yhs3"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2g8hn"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
 
 [node name="Main" type="Control" node_paths=PackedStringArray("car_a", "car_b")]
 process_mode = 3
@@ -83,29 +162,46 @@ theme_override_constants/margin_bottom = 5
 [node name="HBox" type="HBoxContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/Toolbar/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="StartButton" type="Button" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/Toolbar/MarginContainer/HBox"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Start"
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bmxmd")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cur73")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ys0hc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ys0hc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2umlh")
+icon_alignment = 1
+expand_icon = true
 
 [node name="PauseButton" type="Button" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/Toolbar/MarginContainer/HBox"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bmxmd")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_56osq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_b3t3x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ukwqh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_b3t3x")
 disabled = true
-text = "Pause"
+toggle_mode = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="ResetButton" type="Button" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/Toolbar/MarginContainer/HBox"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bmxmd")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_672xq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q40ja")
+theme_override_styles/normal = SubResource("StyleBoxTexture_g8lff")
 disabled = true
-text = "Reset"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -137,6 +233,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxLine_o8e45")
 current_tab = 0
 
 [node name="Properties" type="HBoxContainer" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer"]
@@ -195,5 +292,21 @@ h_flip = true
 [node name="Graphs" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground/TabContainer" instance=ExtResource("4_cl0n0")]
 visible = false
 layout_mode = 2
+
+[node name="ResetPropertiesButton" type="Button" parent="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/TabBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p28rk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yhs3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2g8hn")
+icon = ExtResource("6_o1xhr")
+icon_alignment = 1
+expand_icon = true
 
 [editable path="Frame/MarginContainer/ColorRect/MarginContainer/VBoxContainer/VSplitContainer/Control/Simulation"]

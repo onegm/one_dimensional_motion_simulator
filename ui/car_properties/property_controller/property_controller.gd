@@ -20,9 +20,11 @@ func _ready() -> void:
 	
 	slider.value_changed.connect(func(value): 
 		spin_box.value = value
-		value_changed.emit(value)
+		value_changed.emit(float(value))
 	)
 	
 	spin_box.value_changed.connect(func(value):
 		slider.value = value
 	)
+	
+	SignalBus.reset_properties_requested.connect(slider.set_value.bind(0))
