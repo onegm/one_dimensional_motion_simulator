@@ -14,7 +14,7 @@ func on_data_point_created(car : Car):
 	var tracer = tracer_scene.instantiate()
 	car.add_sibling(tracer)
 	tracer.global_position = car.global_position
-	tracer.set_car_and_time(car, round(Simulation.time))
+	tracer.set_data(car.num_data_point_count, car.position.x, car.velocity, car.color)
 	tracers.append(tracer)
 
 func on_reset_simulation_requested():

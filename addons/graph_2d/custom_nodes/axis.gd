@@ -58,7 +58,7 @@ func _draw() -> void:
 	
 	if show_y_numbers:
 		for grad in vert_grad:
-			draw_string(default_font, grad[0] + Vector2(-35, -5), grad[1])
+			draw_string(default_font, grad[0] + Vector2(-35, 5), grad[1])
 		
 	if show_vertical_line:
 		draw_line(topleft, vert_grad.back()[POINT], Color.WHITE)

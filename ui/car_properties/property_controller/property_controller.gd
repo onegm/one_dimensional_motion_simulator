@@ -51,5 +51,5 @@ func on_pause():
 	slider.editable = !slider.editable
 	spin_box.editable = !spin_box.editable
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	assign_controller_properties()

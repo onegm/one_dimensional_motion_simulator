@@ -8,13 +8,14 @@ class_name Car
 		$CarBody.modulate = color
 		
 var initial_position : float = 0.0
-var initial_velocity : float = 0.0
 var pause_position : float = 0.0
+var initial_velocity : float = 0.0
 var pause_velocity : float = 0.0
 var velocity : float = 0.0
 var acceleration : float = 0.0
 var time : float = 0.0
 var calibration_time : float = 0.0
+var num_data_point_count : int = 0
 
 signal data_point_created(car : Car)
 
@@ -22,9 +23,7 @@ func _ready() -> void:
 	SignalBus.start_simulation_requested.connect(on_start)
 	SignalBus.pause_simulation_requested.connect(on_pause)
 	SignalBus.reset_simulation_requested.connect(on_reset)
-	
-	#SignalBus.data_point_requested.connect(on_data_point_requested)
-	
+		
 	SignalBus.car_created.emit(self)
 	set_physics_process(false)
 
@@ -34,10 +33,14 @@ func _physics_process(delta: float) -> void:
 	velocity += acceleration*delta
 	if time >= 1.0:
 		calibration_time += 1.0
-		position.x = pause_position + pause_velocity*calibration_time + 0.5*acceleration*calibration_time*calibration_time
-		velocity = pause_velocity + acceleration*calibration_time
-		data_point_created.emit(self)
+		recalibrate_position_and_velocity()
+		num_data_point_count += 1
 		time -= 1.0
+		data_point_created.emit(self)
+
+func recalibrate_position_and_velocity() -> void:
+	position.x = pause_position + pause_velocity*calibration_time + 0.5*acceleration*calibration_time*calibration_time
+	velocity = pause_velocity + acceleration*calibration_time
 
 func get_current_position():
 	return position.x
@@ -61,8 +64,7 @@ func on_start():
 
 func on_pause():
 	calibration_time += time
-	position.x = pause_position + pause_velocity*calibration_time + 0.5*acceleration*calibration_time*calibration_time
-	velocity = pause_velocity + acceleration*calibration_time
+	recalibrate_position_and_velocity()
 	
 	pause_position = position.x
 	pause_velocity = velocity
@@ -75,4 +77,5 @@ func on_reset():
 	pause_velocity = initial_velocity
 	time = 0.0
 	calibration_time = 0.0
+	num_data_point_count = 0
 	set_physics_process(false)

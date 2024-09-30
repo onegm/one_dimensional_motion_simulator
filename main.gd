@@ -27,6 +27,7 @@ func on_start_button_pressed():
 func on_pause_button_pressed():
 	SignalBus.pause_simulation_requested.emit()
 	reset_properties_button.disabled = !reset_properties_button.disabled
+	get_tree().paused = !get_tree().paused
 
 func on_reset_button_pressed():
 	SignalBus.reset_simulation_requested.emit()
