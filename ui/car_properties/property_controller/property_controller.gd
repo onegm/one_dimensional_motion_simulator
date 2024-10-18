@@ -13,15 +13,14 @@ extends HBoxContainer
 signal value_changed(value : float)
 
 func _ready() -> void:
-	SignalBus.start_simulation_requested.connect(on_start)
-	SignalBus.pause_simulation_requested.connect(on_pause)
-	SignalBus.reset_simulation_requested.connect(on_pause)
-	SignalBus.reset_properties_requested.connect(slider.set_value.bind(0))
-	
 	assign_controller_properties()
 	connect_components()
 	
 	if !Engine.is_editor_hint():
+		SignalBus.start_simulation_requested.connect(on_start)
+		SignalBus.pause_simulation_requested.connect(on_pause)
+		SignalBus.reset_simulation_requested.connect(on_pause)
+		SignalBus.reset_properties_requested.connect(slider.set_value.bind(0))
 		set_process(false)
 
 func assign_controller_properties():
