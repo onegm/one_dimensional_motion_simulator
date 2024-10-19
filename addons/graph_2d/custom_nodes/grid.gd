@@ -15,3 +15,4 @@ func _draw() -> void:
 		
 	for line in vert_grid:
 		draw_line(line[0], line[1], grid_vertical_color)
+

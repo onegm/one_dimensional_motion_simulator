@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://8nr0ds835skk"]
+[gd_scene load_steps=3 format=3 uid="uid://8nr0ds835skk"]
 
 [ext_resource type="Script" path="res://addons/graph_2d/graph_2d.gd" id="1_1r1n6"]
 [ext_resource type="Script" path="res://ui/graph/graphs.gd" id="1_1ui53"]
-[ext_resource type="Script" path="res://addons/god_plot/plot_2d.gd" id="2_bviri"]
-[ext_resource type="Script" path="res://addons/god_plot/quantitative_series.gd" id="3_t816f"]
 
 [node name="Graphs" type="VBoxContainer"]
 anchors_preset = 15
@@ -18,26 +16,8 @@ metadata/_tab_index = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Plot2D" type="ColorRect" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0, 0, 0, 1)
-script = ExtResource("2_bviri")
-axes_color = Color(1, 1, 1, 1)
-h_axis_title = "Time (s)"
-v_axis_title = "Position
-(m)"
-
-[node name="PositionA" type="Node" parent="HBoxContainer/Plot2D"]
-script = ExtResource("3_t816f")
-
-[node name="PositionB" type="Node" parent="HBoxContainer/Plot2D"]
-script = ExtResource("3_t816f")
-color = Color(0.659327, 0, 0.231825, 1)
-
 [node name="PositionGraph" type="Control" parent="HBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_1r1n6")
