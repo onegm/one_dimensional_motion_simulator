@@ -15,7 +15,7 @@ signal value_changed(value : float)
 func _ready() -> void:
 	SignalBus.start_simulation_requested.connect(on_start)
 	SignalBus.pause_simulation_requested.connect(on_pause)
-	SignalBus.reset_simulation_requested.connect(on_pause)
+	SignalBus.reset_simulation_requested.connect(on_stop)
 	SignalBus.reset_properties_requested.connect(slider.set_value.bind(0))
 	
 	assign_controller_properties()
@@ -50,6 +50,10 @@ func on_start():
 func on_pause():
 	slider.editable = !slider.editable
 	spin_box.editable = !spin_box.editable
+
+func on_stop():
+	slider.editable = true
+	spin_box.editable = true
 
 func _process(_delta: float) -> void:
 	assign_controller_properties()
