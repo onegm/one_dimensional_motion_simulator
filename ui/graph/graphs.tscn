@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://8nr0ds835skk"]
 
-[ext_resource type="Script" path="res://addons/graph_2d/graph_2d.gd" id="1_1r1n6"]
+[ext_resource type="Script" path="res://addons/god_plot/tools/graphs/graph_2d.gd" id="1_1r1n6"]
 [ext_resource type="Script" path="res://ui/graph/graphs.gd" id="1_1ui53"]
 
 [node name="Graphs" type="VBoxContainer"]
@@ -21,21 +21,23 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_1r1n6")
-x_label = "Time (s)"
-y_max = 10.0
-y_label = "Position (m)"
 background_color = Color(0.144063, 0.144063, 0.144063, 1)
-grid_horizontal_visible = true
-grid_vertical_visible = true
+horizontal_title = "Time (s)"
+vertical_title = "Position (m)"
+x_decimal_places = 0
+x_gridlines_opacity = 0.8
+y_decimal_places = 0
+y_gridlines_opacity = 0.8
 
 [node name="VelocityGraph" type="Control" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_1r1n6")
-x_label = "Time (s)"
-y_max = 10.0
-y_label = "Velocity (m/s)"
 background_color = Color(0.144063, 0.144063, 0.144063, 1)
-grid_horizontal_visible = true
-grid_vertical_visible = true
+horizontal_title = "Time (s)"
+vertical_title = "Velocity (m/s)"
+x_decimal_places = 0
+x_gridlines_opacity = 0.8
+y_decimal_places = 0
+y_gridlines_opacity = 0.8

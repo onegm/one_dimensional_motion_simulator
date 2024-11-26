@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjpq5avx4brru"
-path="res://.godot/imported/graph_2d.svg-1a61f3392130136af7ffea4e82a7bd1d.ctex"
+uid="uid://df3xm52p8fm1y"
+path="res://.godot/imported/scatter_icon.svg-23acc42b1329fba9b791b2770ce4b459.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/graph_2d/graph_2d.svg"
-dest_files=["res://.godot/imported/graph_2d.svg-1a61f3392130136af7ffea4e82a7bd1d.ctex"]
+source_file="res://addons/god_plot/icons/scatter_icon.svg"
+dest_files=["res://.godot/imported/scatter_icon.svg-23acc42b1329fba9b791b2770ce4b459.ctex"]
 
 [params]
 

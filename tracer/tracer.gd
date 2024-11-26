@@ -1,5 +1,4 @@
-extends Node2D
-class_name Tracer
+class_name Tracer extends Node2D
 
 @onready var texture_rect := %TextureRect
 @onready var properties = %Properties

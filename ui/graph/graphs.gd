@@ -9,15 +9,15 @@ func _enter_tree() -> void:
 
 func add_car(car : Car) -> void:
 	await ready
-	var position_series = position_graph.add_plot_item(" ", car.color)
-	var velocity_series = velocity_graph.add_plot_item(" ", car.color)
+	var position_series = LineSeries.new(car.color, 1.0)
+	var velocity_series = LineSeries.new(car.color, 1.0)
 	car.data_point_created.connect(func(this_car): 
-		position_series.add_point(Vector2(this_car.num_data_point_count, this_car.position.x))
-		velocity_series.add_point(Vector2(this_car.num_data_point_count, this_car.velocity))
+		position_series.add_point(this_car.num_data_point_count, this_car.position.x)
+		velocity_series.add_point(this_car.num_data_point_count, this_car.velocity)
 		)
+	position_graph.add_series(position_series)
+	velocity_graph.add_series(velocity_series)
 
 func on_reset_simulation_requested():
-	for plot in position_graph._plots:
-		plot.remove_all()
-	for plot in velocity_graph._plots:
-		plot.remove_all()
+	position_graph.clear_data()
+	velocity_graph.clear_data()

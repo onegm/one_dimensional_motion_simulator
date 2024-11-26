@@ -1,6 +1,4 @@
-#@tool
-extends Node2D
-class_name Car
+class_name Car extends Node2D
 
 @export var color : Color :
 	set(value):

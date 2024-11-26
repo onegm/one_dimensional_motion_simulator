@@ -1,4 +1,3 @@
-@tool
 extends HBoxContainer
 
 @export var min_slider_value : int
