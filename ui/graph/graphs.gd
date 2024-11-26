@@ -9,8 +9,8 @@ func _enter_tree() -> void:
 
 func add_car(car : Car) -> void:
 	await ready
-	var position_series = LineSeries.new(car.color, 1.0)
-	var velocity_series = LineSeries.new(car.color, 1.0)
+	var position_series = LineSeries.new(car.color, 1.5)
+	var velocity_series = LineSeries.new(car.color, 1.5)
 	car.data_point_created.connect(func(this_car): 
 		position_series.add_point(this_car.num_data_point_count, this_car.position.x)
 		velocity_series.add_point(this_car.num_data_point_count, this_car.velocity)

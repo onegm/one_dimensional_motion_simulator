@@ -25,9 +25,9 @@ background_color = Color(0.144063, 0.144063, 0.144063, 1)
 horizontal_title = "Time (s)"
 vertical_title = "Position (m)"
 x_decimal_places = 0
-x_gridlines_opacity = 0.8
+x_gridlines_opacity = 0.5
 y_decimal_places = 0
-y_gridlines_opacity = 0.8
+y_gridlines_opacity = 0.5
 
 [node name="VelocityGraph" type="Control" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -38,6 +38,6 @@ background_color = Color(0.144063, 0.144063, 0.144063, 1)
 horizontal_title = "Time (s)"
 vertical_title = "Velocity (m/s)"
 x_decimal_places = 0
-x_gridlines_opacity = 0.8
+x_gridlines_opacity = 0.5
 y_decimal_places = 0
-y_gridlines_opacity = 0.8
+y_gridlines_opacity = 0.5
